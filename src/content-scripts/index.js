@@ -42,8 +42,12 @@ function removePopup() {
 }
 
 function movePopup(e) {
-  console.log('setting position to', e.clientX, e.clientY);
-  $(popup).animate({ top: e.clientY - 20, left: e.clientX + 20 }, 0);
+  const x = e.pageX;
+  const y = e.pageY;
+  //   const x = e.pageX - $(window).offset().left + $(window).scrollLeft();
+  //   const y = e.pageY - $(window).offset().top + $(window).scrollTop();
+  console.log('setting position to', x, y);
+  $(popup).animate({ top: y - 20, left: x + 20 }, 0);
 }
 
 async function createUrl(url) {

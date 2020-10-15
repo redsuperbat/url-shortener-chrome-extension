@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "rimraf dist .cache && parcel build --no-source-maps src/popup/index.html src/background/background.js src/content-scripts/*",
+    "build": "rimraf dist .parcel-cache && parcel build --no-source-maps src/popup/index.html src/background/background.js src/content-scripts/* && cp ./static/* ./dist",
     "dev": "rimraf dist && parcel build src/popup/index.html src/background/background.js src/content-scripts/* && cp ./static/* ./dist",
     "watch": "rimraf ./dist/* && cp ./static/* ./dist && parcel watch --no-hmr src/popup/index.html src/background/background.js src/content-scripts/*"
   },
+  "browserslist": [
+    "last 1 Chrome versions"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
