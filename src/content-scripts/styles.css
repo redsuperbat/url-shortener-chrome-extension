@@ -1,0 +1,24 @@
+#url-shortener-popup {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  background: lightgray;
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#url-shortener-link-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  position: absolute;
+  width: 145px;
+  border-radius: 4px;
+  background: lightgray;
+  bottom: 110%;
+  left: 0;
+  cursor: default;
+}

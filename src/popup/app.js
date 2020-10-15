@@ -1,28 +1,57 @@
 import qr from 'qrcode';
 import { http } from './axiosInstance';
-import { createApp } from 'vue';
+import $ from 'jquery';
 
 const canvas = document.querySelector('canvas');
 const anchor = document.querySelector('a');
 
-const app = createApp();
-app.mount('#app');
-
 async function main() {
+  toogleLoading();
   const fullUrl = await createUrl();
-  await drawQr(fullUrl);
-  anchor.href = fullUrl;
-  anchor.innerText = fullUrl;
+  if (fullUrl) {
+    await drawQr(fullUrl);
+    anchor.href = fullUrl;
+    anchor.innerText = fullUrl;
+    $('svg').on('click', () => {
+      navigator.clipboard
+        .writeText(fullUrl)
+        .then(() => (anchor.innerText = 'Copied successfully!'))
+        .catch(() => (anchor.innerText = 'Something went wrong try again...'))
+        .finally(() => setTimeout(() => (anchor.innerText = fullUrl), 500));
+    });
+    $('button').on('click', async () => {
+      const blob = await getImageBlob();
+      navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+    });
+  } else {
+    $('svg').remove();
+    $('button').remove();
+    $('body').append('<h3>Link not supported</h3>');
+  }
+  toogleLoading();
+}
+
+async function getImageBlob() {
+  return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob)));
+}
+
+function toogleLoading() {
+  if ($('main').is(':hidden')) {
+    $('main').show();
+    $('#loading').hide();
+  } else {
+    $('main').hide();
+    $('#loading').show();
+  }
 }
 
 async function createUrl() {
   const url = await getCurrentUrl();
   try {
     const res = await http.post('', { url });
-    drawQr(res.data.fullUrl);
     return res.data.fullUrl;
   } catch (err) {
-    console.log(err.response.data);
+    console.log(err);
   }
 }
 

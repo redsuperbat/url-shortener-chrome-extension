@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  padding: 0;
-  height: 350px;
   width: 200px;
+  height: 300px;
+  padding: 10px 0px;
   display: grid;
   place-items: center;
   grid-template:
@@ -17,4 +17,19 @@ main {
 }
 canvas {
   max-width: 200px;
+}
+
+svg {
+  cursor: pointer;
+  height: 16px;
+  margin-left: 15px;
+  transition: all 200ms ease;
+}
+
+svg:hover {
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
+}
+
+.flex {
+  display: flex;
 }

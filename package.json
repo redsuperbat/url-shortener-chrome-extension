@@ -2,32 +2,22 @@
   "name": "url-shortener-extension",
   "version": "1.0.0",
   "description": "",
-  "main": "background.js",
   "scripts": {
-    "build": "rimraf dist .cache && parcel build --no-source-maps src/popup/index.html src/background/background.js",
-    "dev": "rimraf dist && parcel build src/popup/index.html src/background/background.js"
+    "build": "rimraf dist .cache && parcel build --no-source-maps src/popup/index.html src/background/background.js src/content-scripts/*",
+    "dev": "rimraf dist && parcel build src/popup/index.html src/background/background.js src/content-scripts/* && cp ./static/* ./dist",
+    "watch": "rimraf ./dist/* && cp ./static/* ./dist && parcel watch --no-hmr src/popup/index.html src/background/background.js src/content-scripts/*"
   },
-  "staticFiles": {
-    "staticPath": [
-      {
-        "staticOutDir": "../",
-        "staticPath": "static"
-      }
-    ]
-  },
-  "browserslist": [
-    "last 1 Chrome versions"
-  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.20.0",
+    "jquery": "^3.5.1",
     "qrcode": "^1.4.4",
-    "vue": "^3.0.0"
+    "validator": "^13.1.17"
   },
   "devDependencies": {
-    "parcel": "^1.12.4",
+    "parcel": "^2.0.0-nightly.425",
     "parcel-plugin-static-files-copy": "^2.5.0",
     "rimraf": "^3.0.2"
   }
