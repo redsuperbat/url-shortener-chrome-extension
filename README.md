@@ -12,3 +12,8 @@ Uses the [url-shortener api](https://github.com/redsuperbat/url-shortener) to cr
 - run `npm build`
 
 Your files should be in the dist directory. All static files has to be in the static folder and refrenced correctly in the manifest.json
+
+## Demo
+
+Inline-style: 
+![alt text](https://github.com/redsuperbat/url-shortener-chrome-extension/demo-files/demo.gif "Demo of usage")
