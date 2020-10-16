@@ -16,4 +16,4 @@ Your files should be in the dist directory. All static files has to be in the st
 ## Demo
 
 Inline-style: 
-![alt text](https://github.com/redsuperbat/url-shortener-chrome-extension/demo-files/demo.gif "Demo of usage")
+![alt text](https://github.com/redsuperbat/url-shortener-chrome-extension/blob/master/demo-files/demo.gif "Demo of usage")
